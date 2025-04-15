@@ -66,9 +66,6 @@ if (num_found == 1) {
   print("No .xlsx links starting with 'https://' found on the page.")
   }
 
-########################################
-#    TO ADD EXCEL DOWNLOAD THEN IMPORT 
-#  Considerations on which sheets and cleaning data
 
 # --- Download the file if a URL was found ---
 if (!is.null(found_xlsx_url)) {
@@ -79,9 +76,13 @@ if (!is.null(found_xlsx_url)) {
 }
 
 # Gets sheet names of xlsx file
-
 sheet_names <- getSheetNames(folder_path)
 
 # Set up for loop to import files
+
+########################################
+#    TO ADD EXCEL IMPORT 
+#  Considerations on which sheets and cleaning data
+
 
 
