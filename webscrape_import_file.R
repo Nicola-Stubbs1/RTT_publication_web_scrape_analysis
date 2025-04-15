@@ -11,6 +11,7 @@ library(rvest)
 rtt_url <- "https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/wlmds/" 
 
 # Folder path including file name for the Excel file to be downloaded
+# * try and make this file name adaptable - current date??
 folder_path <- "Files/rtt_file.xlsx"
 
 # Adding this section to change text later on if changes to url text (This feeds in to the matching links section)
@@ -65,6 +66,23 @@ if (num_found == 1) {
   print("No .xlsx links starting with 'https://' found on the page.")
   }
 
+
+# --- Download the file if a URL was found ---
+if (!is.null(found_xlsx_url)) {
+  # Use mode="wb" for binary files like Excel
+  download.file(url = found_xlsx_url, destfile = folder_path, mode = "wb")
+} else {
+  print("Error - no url link to download")
+}
+
+# Gets sheet names of xlsx file
+sheet_names <- getSheetNames(folder_path)
+
+# Set up for loop to import files
+
 ########################################
-#    TO ADD EXCEL DOWNLOAD THEN IMPORT 
+#    TO ADD EXCEL IMPORT 
 #  Considerations on which sheets and cleaning data
+
+
+
